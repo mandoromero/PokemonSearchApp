@@ -11,6 +11,10 @@ body {
   text-align: center;
 }
 
+h1 {
+  margin-bottom: 50px;
+}
+
 h1,
 h2,
 h3,
@@ -27,6 +31,7 @@ p {
   padding-bottom: 50px;
   background-color: #1e90ff;
   border-radius: 10%;
+  border: 5px #1e90ff ridge;
 }
 #title {
   width: 380px;
@@ -39,6 +44,10 @@ p {
   border-radius: 15%;
   background-color: blue;
   color: yellow;
+}
+
+input {
+  margin-left: 150px;
 }
 
 h2 {
