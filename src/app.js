@@ -1,3 +1,5 @@
+import Stylesheet from "./styles.css";
+
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const pokemonName = document.getElementById("pokemon-name");
