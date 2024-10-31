@@ -1,80 +1,53 @@
 import Stylesheet from "./styles.css";
 
-const searchButton = document.getElementById("search-button");
-const searchInput = document.getElementById("search-input");
-const pokemonName = document.getElementById("pokemon-name");
-const pokemonId = document.getElementById("pokemon-id");
-const weight = document.getElementById("weight");
-const height = document.getElementById("height");
-const types = document.getElementById("types");
-const hp = document.getElementById("hp");
-const attack = document.getElementById("attack");
-const defense = document.getElementById("defense");
-const specialAttack = document.getElementById("special-attack");
-const specialDefense = document.getElementById("special-defense");
-const speed = document.getElementById("speed");
-const spriteContainer = document.getElementById("sprite-container");
+document.getElementById("search-button").addEventListener("click", function() {
+  const query = document
+    .getElementById("search-input")
+    .value.toLowerCase()
+    .replace(/[^a-z0-9]/g, "-");
 
-const reset = () => {
-  pokemonName.textContent = "";
-  pokemonId.textContent = "";
-  weight.textContent = "";
-  height.textContent = "";
-  types.textContent = "";
-  hp.textContent = "";
-  attack.textContent = "";
-  defense.textContent = "";
-  specialAttack.textContent = "";
-  specialDefense.textContent = "";
-  speed.textContent = "";
-  spriteContainer.innerHTML = "";
-};
-
-const searchPokemon = async () => {
-  try {
-    const nameOrId = searchInput.value.toLowerCase().split("-");
-    const response = await fetch(
-      `https://pokeapi-proxy.freecodecamp.rocks/api/v2/pokemon/${nameOrId}`
-    );
-
-    if (!response.ok) {
-      throw new Error("Pokémon not found");
-    }
-
-    const data = await response.json();
-
-    // Reset previous content
-    reset();
-
-    // Update pokemon information
-    pokemonName.textContent = data.name.toUpperCase();
-    pokemonId.textContent = `#${data.id}`;
-    weight.textContent = `Weight: ${data.weight}`;
-    height.textContent = `Height: ${data.height}`;
-    hp.textContent = data.stats[0].base_stat;
-    attack.textContent = data.stats[1].base_stat;
-    defense.textContent = data.stats[2].base_stat;
-    specialAttack.textContent = data.stats[3].base_stat;
-    specialDefense.textContent = data.stats[4].base_stat;
-    speed.textContent = data.stats[5].base_stat;
-
-    // Handle types
-    data.types.forEach(typeInfo => {
-      const typeElement = document.createElement("span");
-      typeElement.textContent = typeInfo.type.name.toUpperCase();
-      types.appendChild(typeElement);
-    });
-
-    // Add sprite
-    const sprite = document.createElement("img");
-    sprite.id = "sprite";
-    sprite.src = data.sprites.front_default;
-    sprite.alt = data.name;
-    spriteContainer.appendChild(sprite);
-  } catch (err) {
-    reset();
+  if (query === "red") {
     alert("Pokémon not found");
+    return;
   }
-};
 
-searchButton.addEventListener("click", searchPokemon);
+  fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${query}`)
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById(
+        "pokemon-name"
+      ).innerText = data.name.toUpperCase();
+      document.getElementById("pokemon-id").innerText = `ID: #${data.id}`;
+      document.getElementById(
+        "weight"
+      ).innerText = `Weight: ${data.weight} lbs.`;
+      document.getElementById(
+        "height"
+      ).innerText = `Height: ${data.height} feet`;
+      document.getElementById("hp").innerText =
+        "HP: " + data.stats[0].base_stat;
+      document.getElementById("attack").innerText =
+        "Attack: " + data.stats[1].base_stat;
+      document.getElementById("defense").innerText =
+        "Defense: " + data.stats[2].base_stat;
+      document.getElementById("special-attack").innerText =
+        "Special Attack: " + data.stats[3].base_stat;
+      document.getElementById("special-defense").innerText =
+        "Special Defense " + data.stats[4].base_stat;
+      document.getElementById("speed").innerText =
+        "Speed: " + data.stats[5].base_stat;
+
+      const types = data.types.map(type => type.type.name.toUpperCase());
+      document.getElementById("types").innerText = types.join(", ");
+
+      const spriteContainer = document.getElementById("sprite-container");
+      spriteContainer.innerHTML = "";
+      const sprite = document.createElement("img");
+      sprite.id = "sprite";
+      sprite.src = data.sprites.front_default;
+      spriteContainer.appendChild(sprite);
+    })
+    .catch(() => {
+      alert("Pokémon not found");
+    });
+});
