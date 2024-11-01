@@ -19,8 +19,8 @@
     </div>
 
     <div id="container">
-      <input id="search-input" type="text" />
-      <button id="search-button">Search</button>
+      <input id="search-input" type="text" placeholder="Pokemon name or ID" />
+      <button id="search-btn">Search</button>
     </div>
 
     <div id="search-results">
@@ -37,21 +37,23 @@
         <p id="types"></p>
         <p id="hp"></p>
       </div>
-    </div>
 
-    <div id="attack-defense">
-      <div id="regular">
-        <p id="attack"></p>
-        <p id="defense"></p>
+      <div id="attack-defense">
+        <div id="regular">
+          <p id="attack"></p>
+          <p id="defense"></p>
+        </div>
+        <div id="special">
+          <p id="special-attack"></p>
+          <p id="special-defense"></p>
+        </div>
       </div>
-      <div id="special">
-        <p id="special-attack"></p>
-        <p id="special-defense"></p>
-      </div>
+
+      <p id="speed"></p>
+      <div id="clear-container"">
+        <button id="clear-btn">Clear</button> 
+      </div> 
     </div>
-
-    <p id="speed"></p>
-
     <script src="./app.js"></script>
   </body>
 </html>

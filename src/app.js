@@ -1,6 +1,6 @@
 import Stylesheet from "./styles.css";
 
-document.getElementById("search-button").addEventListener("click", function() {
+document.getElementById("search-btn").addEventListener("click", function() {
   const query = document
     .getElementById("search-input")
     .value.toLowerCase()
@@ -10,6 +10,8 @@ document.getElementById("search-button").addEventListener("click", function() {
     alert("Pokémon not found");
     return;
   }
+
+  document.getElementById("search-results").style.display = "block";
 
   fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${query}`)
     .then(response => response.json())
@@ -33,7 +35,7 @@ document.getElementById("search-button").addEventListener("click", function() {
       document.getElementById("special-attack").innerText =
         "Special Attack: " + data.stats[3].base_stat;
       document.getElementById("special-defense").innerText =
-        "Special Defense " + data.stats[4].base_stat;
+        "Special Defense: " + data.stats[4].base_stat;
       document.getElementById("speed").innerText =
         "Speed: " + data.stats[5].base_stat;
 
@@ -50,4 +52,23 @@ document.getElementById("search-button").addEventListener("click", function() {
     .catch(() => {
       alert("Pokémon not found");
     });
+});
+document.getElementById("clear-btn").addEventListener("click", function() {
+  document.getElementById("search-input").value = "";
+  document.getElementById("search-results").style.display = "none";
+
+  document.getElementById("pokemon-name").innerText = "";
+  document.getElementById("pokemon-id").innerText = "";
+  document.getElementById("weight").innerText = "";
+  document.getElementById("height").innerText = "";
+  document.getElementById("hp").innerText = "";
+  document.getElementById("attack").innerText = "";
+  document.getElementById("defense").innerText = "";
+  document.getElementById("special-attack").innerText = "";
+  document.getElementById("special-defense").innerText = "";
+  document.getElementById("speed").innerText = "";
+  document.getElementById("types").innerText = "";
+
+  const spriteContainer = document.getElementById("sprite-container");
+  spriteContainer.innerHTML = "";
 });

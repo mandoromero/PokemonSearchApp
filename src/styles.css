@@ -1,7 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 body {
-  background-color: #36454f;
   color: yellow;
 }
 
@@ -29,25 +28,37 @@ p {
   justify-content: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #1e90ff;
+  background: linear-gradient(to left, #003e7a 10%, #1e90ff 75%, #003e7a);
   border-radius: 10%;
   border: 5px #1e90ff ridge;
 }
+
 #title {
   width: 380px;
   margin: 35px auto 20px auto;
   text-align: center;
 }
 
-#search-button {
+#search-btn {
   margin-left: 20px;
   border-radius: 15%;
-  background-color: blue;
-  color: yellow;
+  background: linear-gradient(to left, #003e7a 10%, #1e90ff 95%, #003e7a);
 }
 
 input {
   margin-left: 150px;
+}
+
+#search-results {
+  display: none;
+  width: 600px;
+  margin: 20px auto 0 auto;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(to left, #003e7a 10%, #1e90ff 75%, #003e7a);
+  border-radius: 10%;
+  border: 5px #1e90ff ridge;
 }
 
 h2 {
@@ -71,6 +82,11 @@ h3 {
   margin: 20px auto;
 }
 
+img {
+  height: 200px;
+  width: 175px;
+}
+
 #types-hp {
   margin: 20px auto;
   display: flex;
@@ -87,4 +103,16 @@ h3 {
 
 #speed {
   text-align: center;
+}
+
+#clear-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#clear-btn {
+  displalyborder-radius: 15%;
+  background: linear-gradient(to left, #003e7a 10%, #1e90ff 95%, #003e7a);
 }
