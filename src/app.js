@@ -1,6 +1,6 @@
 import Stylesheet from "./styles.css";
 
-document.getElementById("search-btn").addEventListener("click", function() {
+document.getElementById("search-button").addEventListener("click", function() {
   const query = document
     .getElementById("search-input")
     .value.toLowerCase()
@@ -12,10 +12,13 @@ document.getElementById("search-btn").addEventListener("click", function() {
   }
 
   document.getElementById("search-results").style.display = "block";
+  document.getElementById("clear-button").style.display = "block";
+  document.getElementById("loading-spinner").style.display = "block";
 
   fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${query}`)
     .then(response => response.json())
     .then(data => {
+      document.getElementById("loading-spinner").style.display = "none";
       document.getElementById(
         "pokemon-name"
       ).innerText = data.name.toUpperCase();
@@ -53,7 +56,7 @@ document.getElementById("search-btn").addEventListener("click", function() {
       alert("Pokémon not found");
     });
 });
-document.getElementById("clear-btn").addEventListener("click", function() {
+document.getElementById("clear-button").addEventListener("click", function() {
   document.getElementById("search-input").value = "";
   document.getElementById("search-results").style.display = "none";
 
@@ -68,6 +71,7 @@ document.getElementById("clear-btn").addEventListener("click", function() {
   document.getElementById("special-defense").innerText = "";
   document.getElementById("speed").innerText = "";
   document.getElementById("types").innerText = "";
+  document.getElementById("clear-button").style.display = "none";
 
   const spriteContainer = document.getElementById("sprite-container");
   spriteContainer.innerHTML = "";

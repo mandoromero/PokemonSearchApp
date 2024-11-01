@@ -19,7 +19,7 @@ h2,
 h3,
 p {
   font-family: "Pokemon Solid", sans-serif;
-  color: yellow;
+  color: #ffcb05;
 }
 
 #container {
@@ -39,14 +39,21 @@ p {
   text-align: center;
 }
 
-#search-btn {
+#search-button {
   margin-left: 20px;
   border-radius: 15%;
-  background: linear-gradient(to left, #003e7a 10%, #1e90ff 95%, #003e7a);
+  background-color: #ffcb05;
 }
 
 input {
   margin-left: 150px;
+}
+
+#loading-spinner {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Pokemon Solid", sans-serif;
+  color: yellow;
 }
 
 #search-results {
@@ -112,7 +119,8 @@ img {
   margin-top: 20px;
 }
 
-#clear-btn {
-  displalyborder-radius: 15%;
-  background: linear-gradient(to left, #003e7a 10%, #1e90ff 95%, #003e7a);
+#clear-button {
+  display: none;
+  border-radius: 15%;
+  background-color: #ffcb05;
 }

@@ -20,8 +20,10 @@
 
     <div id="container">
       <input id="search-input" type="text" placeholder="Pokemon name or ID" />
-      <button id="search-btn">Search</button>
+      <button id="search-button">Search</button>
     </div>
+
+    <div id="loading-spinner" style="display:none;">Loading...</div>
 
     <div id="search-results">
       <h2 id="pokemon-name"></h2>
@@ -51,7 +53,7 @@
 
       <p id="speed"></p>
       <div id="clear-container"">
-        <button id="clear-btn">Clear</button> 
+        <button id="clear-button">Clear</button> 
       </div> 
     </div>
     <script src="./app.js"></script>
